@@ -1,4 +1,4 @@
-fastapi
+git initfastapi
 uvicorn[standard]
 pandas
 scikit-learn
