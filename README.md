@@ -9,8 +9,17 @@ Quickstart (backend)
    python -m venv .venv
    .venv\Scripts\activate
    pip install -r requirements.txt
+2. data upload:
+   Download and Prepare the Dataset:
+   python -m backend.scripts.download_kaggle_creditcard
 
-2. Run backend:
+   rain the Fraud Detection Model:
+   python -m backend.scripts.train_fraud data/kaggle/creditcard.csv
+
+   Validate the Model Results:
+   python -m backend.scripts.validate_fraud_on_kaggle
+
+3. Run backend:
 
    uvicorn backend.app:app --reload --port 8000
 
