@@ -1,18 +1,28 @@
-"""Simple script to train a fraud IsolationForest model.
-Usage:
-    python backend/scripts/train_fraud.py data/kaggle/creditcard.csv
-"""
-import sys
-from backend.models.fraud_model import train_isolation_forest
+import pandas as pd
+import joblib
+import os
+from backend.models.fraud_model import FraudModel
 
-
-def main():
-    if len(sys.argv) < 2:
-        print("Usage: python train_fraud.py <path-to-csv>")
+def train():
+    data_path = r"data\kaggle\creditcard.csv"
+    
+    if not os.path.exists(data_path):
+        print("❌ Dataset missing.")
         return
-    csv = sys.argv[1]
-    model = train_isolation_forest(csv)
-    print("Trained model and saved to data/processed/")
+
+    print("📖 Loading data...")
+    df = pd.read_csv(data_path)
+    model = FraudModel()
+    
+    # Use standard features for Isolation Forest
+    features = [f'V{i}' for i in range(1, 29)] + ['Amount']
+    
+    print("⚙️ Training Fraud Model...")
+    model.train(df[features])
+    
+    os.makedirs("data/processed", exist_ok=True)
+    model.save("data/processed/fraud_isolation_forest.joblib")
+    print("✅ Model trained successfully.")
 
 if __name__ == "__main__":
-    main()
+    train()
