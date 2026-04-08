@@ -1,0 +1,32 @@
+[
+  {
+    "test": "tests/test_chatbot.py::test_customer_query",
+    "outcome": "passed",
+    "duration": 0.019238300003053155,
+    "metrics": {
+      "response_present": true,
+      "accuracy": 1.0
+    }
+  },
+  {
+    "test": "tests/test_fraud.py::test_fraud_accuracy",
+    "outcome": "passed",
+    "duration": 7.636232700002438,
+    "metrics": {
+      "accuracy": 0.9897825425434797,
+      "precision": 0.09695603156708005,
+      "recall": 0.5443037974683544,
+      "f1": 0.1645933014354067,
+      "test_size": 85442
+    }
+  },
+  {
+    "test": "tests/test_transactions.py::test_transaction_history",
+    "outcome": "passed",
+    "duration": 0.01725780000560917,
+    "metrics": {
+      "transactions_len": 0,
+      "accuracy": 1.0
+    }
+  }
+]
