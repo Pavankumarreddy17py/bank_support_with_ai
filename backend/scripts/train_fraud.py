@@ -4,7 +4,7 @@ import os
 from backend.models.fraud_model import FraudModel
 
 def train():
-    data_path = r"C:\Users\vadde\Desktop\bank\bank_support_ai11\data\kaggle\creditcard.csv"
+    data_path = r"C:\Users\vadde\Desktop\bank\bank_support_ai11\data\kaggle\b"
     
     if not os.path.exists(data_path):
         print("❌ Dataset missing.")

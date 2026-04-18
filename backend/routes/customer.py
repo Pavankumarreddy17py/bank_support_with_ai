@@ -1,21 +1,16 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter
 from pydantic import BaseModel
 from backend.models.chatbot_model import Chatbot
 
 router = APIRouter()
-# This creates the bot instance when the server starts
+# This initializes the bot ONE TIME when you start the server
 bot = Chatbot()
 
-class CustomerQuery(BaseModel):
+class Query(BaseModel):
     customer_id: str
     message: str
 
 @router.post("/query")
-async def chat_with_support(query: CustomerQuery):
-    try:
-        # Call the respond function we defined above
-        answer = bot.respond(query.message)
-        return {"customer_id": query.customer_id, "response": answer}
-    except Exception as e:
-        print(f"Router Error: {e}")
-        raise HTTPException(status_code=500, detail="Internal Server Error")
+async def chat(query: Query):
+    response = bot.respond(query.message)
+    return {"response": response}

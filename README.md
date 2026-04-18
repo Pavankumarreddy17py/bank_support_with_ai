@@ -9,6 +9,7 @@ Quickstart (backend)
    python -m venv .venv
    .venv\Scripts\activate
    pip install -r requirements.txt
+   
 2. data upload:
    Download and Prepare the Dataset:
    python -m backend.scripts.download_kaggle_creditcard
